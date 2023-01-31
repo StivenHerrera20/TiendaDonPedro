@@ -43,6 +43,7 @@
             this.TxtIVA = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CbxCategoria = new System.Windows.Forms.ComboBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.BarraTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             this.BtnGuardar.TabIndex = 45;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // label3
             // 
@@ -220,12 +222,23 @@
             this.CbxCategoria.TabIndex = 49;
             this.CbxCategoria.SelectedIndexChanged += new System.EventHandler(this.CbxCategoria_SelectedIndexChanged);
             // 
+            // txtId
+            // 
+            this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(111, 285);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(357, 23);
+            this.txtId.TabIndex = 50;
+            // 
             // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.ClientSize = new System.Drawing.Size(512, 261);
+            this.ClientSize = new System.Drawing.Size(512, 262);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.CbxCategoria);
             this.Controls.Add(this.TxtIVA);
             this.Controls.Add(this.label4);
@@ -266,6 +279,7 @@
         public System.Windows.Forms.Label LblTituloForm;
         public System.Windows.Forms.TextBox TxtIVA;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CbxCategoria;
+        public System.Windows.Forms.ComboBox CbxCategoria;
+        public System.Windows.Forms.TextBox txtId;
     }
 }

@@ -100,6 +100,7 @@
             this.panelContenedorForm.Name = "panelContenedorForm";
             this.panelContenedorForm.Size = new System.Drawing.Size(900, 407);
             this.panelContenedorForm.TabIndex = 6;
+            this.panelContenedorForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
             // 
             // panel1
             // 

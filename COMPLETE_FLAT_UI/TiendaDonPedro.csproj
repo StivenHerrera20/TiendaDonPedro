@@ -74,7 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClaseCategoria.cs" />
     <Compile Include="ClaseLogin.cs" />
+    <Compile Include="ClaseProductos.cs" />
     <Compile Include="ClaseUsuarios.cs" />
     <Compile Include="FrmCategorias.cs">
       <SubType>Form</SubType>

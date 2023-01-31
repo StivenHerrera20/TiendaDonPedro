@@ -30,11 +30,12 @@
         {
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.LblTituloFormCategoria = new System.Windows.Forms.Label();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.BtnCerrar = new System.Windows.Forms.Button();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.BarraTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,20 @@
             this.LblTituloFormCategoria.Size = new System.Drawing.Size(105, 17);
             this.LblTituloFormCategoria.TabIndex = 15;
             this.LblTituloFormCategoria.Text = "Form Categoria";
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnCerrar.FlatAppearance.BorderSize = 0;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Image = global::COMPLETE_FLAT_UI.Properties.Resources.Close;
+            this.BtnCerrar.Location = new System.Drawing.Point(353, 0);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(38, 38);
+            this.BtnCerrar.TabIndex = 4;
+            this.BtnCerrar.UseVisualStyleBackColor = true;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // BtnSalir
             // 
@@ -89,6 +104,7 @@
             this.BtnGuardar.TabIndex = 45;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // TxtDescripcion
             // 
@@ -111,26 +127,24 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Descripcion:";
             // 
-            // BtnCerrar
+            // txtIdCategoria
             // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnCerrar.FlatAppearance.BorderSize = 0;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Image = global::COMPLETE_FLAT_UI.Properties.Resources.Close;
-            this.BtnCerrar.Location = new System.Drawing.Point(353, 0);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(38, 38);
-            this.BtnCerrar.TabIndex = 4;
-            this.BtnCerrar.UseVisualStyleBackColor = true;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            this.txtIdCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIdCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdCategoria.Location = new System.Drawing.Point(119, 188);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.Size = new System.Drawing.Size(248, 23);
+            this.txtIdCategoria.TabIndex = 47;
+            this.txtIdCategoria.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // FrmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.ClientSize = new System.Drawing.Size(393, 155);
+            this.ClientSize = new System.Drawing.Size(393, 156);
+            this.Controls.Add(this.txtIdCategoria);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnGuardar);
@@ -156,5 +170,6 @@
         private System.Windows.Forms.Button BtnGuardar;
         public System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox txtIdCategoria;
     }
 }

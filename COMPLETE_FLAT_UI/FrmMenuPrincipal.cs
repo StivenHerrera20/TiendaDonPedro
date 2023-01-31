@@ -218,6 +218,7 @@ namespace COMPLETE_FLAT_UI
             FrmLista fm = new FrmLista();
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             fm.LblTitulo.Text = "Lista de Productos";
+            fm.DGVDatos.DataSource = ClaseProductos.Func_TraerTodosProductos();
             AbrirFormEnPanel(fm);
         }
 
@@ -233,6 +234,7 @@ namespace COMPLETE_FLAT_UI
         {
             FrmLista fm = new FrmLista();
             fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            fm.DGVDatos.DataSource = ClaseCategoria.Func_TraerTodasCategorias();
             fm.LblTitulo.Text = "Lista de Categorias";
             AbrirFormEnPanel(fm);
         }
@@ -254,6 +256,11 @@ namespace COMPLETE_FLAT_UI
         }
 
         private void Lbl_Usuario_Apellido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelContenedorForm_Paint(object sender, PaintEventArgs e)
         {
 
         }
