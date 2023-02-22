@@ -265,6 +265,20 @@ namespace COMPLETE_FLAT_UI
 
         }
 
+        private void BtnFacturas_Click(object sender, EventArgs e)
+        {
+            FrmLista fm = new FrmLista();
+            fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            fm.LblTitulo.Text = "Lista de Facturas";
+            fm.btnEditar.Enabled = false;
+            AbrirFormEnPanel(fm);
+        }
+
+        private void PanelBarraTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
 
         //METODOS PARA ABRIR OTROS FORMULARIOS Y MOSTRAR FORM DE LOGO Al CERRAR ----------------------------------------------------------

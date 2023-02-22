@@ -46,6 +46,11 @@ namespace COMPLETE_FLAT_UI
             if (LblTitulo.Text == "Lista de Clientes")
             {
                 FrmClientes f = new FrmClientes();
+                f.txtIdCliente.Text = DGVDatos.CurrentRow.Cells["ID_CLIENTE"].Value.ToString();
+                f.TxtNombre.Text = DGVDatos.CurrentRow.Cells["NOMBRE_CLIENTE"].Value.ToString();
+                f.TxtDireccion.Text = DGVDatos.CurrentRow.Cells["DIRECCION_CLIENTE"].Value.ToString();
+                f.TxtCorreo.Text = DGVDatos.CurrentRow.Cells["EMAIL_CLIENTE"].Value.ToString();
+                f.ShowDialog();
             }
 
             if (LblTitulo.Text == "Lista de Categorias")
@@ -105,6 +110,11 @@ namespace COMPLETE_FLAT_UI
                 }
                 f.ShowDialog();
             }
+            if (LblTitulo.Text == "Lista de Facturas")
+            {
+                FrmFactEnc f = new FrmFactEnc();
+                f.ShowDialog();
+            }
 
 
         }
@@ -147,13 +157,13 @@ namespace COMPLETE_FLAT_UI
                 rpta = MessageBox.Show("Desea eliminar el ID: " + idEliminar, "Advertencia!!!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (rpta == DialogResult.OK)
                 {
-                    if (ClaseUsuarios.Func_eliminaCliente(Convert.ToInt32(idEliminar)))
+                    if (ClaseClientes.Func_eliminaCliente(Convert.ToInt32(idEliminar)))
                     {
                         MessageBox.Show("Cliente eliminado", "Felicitaciones!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Error: " + ClaseUsuarios.excepcion, "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error: " + ClaseClientes.excepcion, "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -178,6 +188,26 @@ namespace COMPLETE_FLAT_UI
                 }
 
             }
+
+            if (LblTitulo.Text == "Lista de Productos")
+            {
+                string idEliminar = DGVDatos.CurrentRow.Cells["ID_PRODUCTO"].Value.ToString();
+                DialogResult rpta = new DialogResult();
+                rpta = MessageBox.Show("Desea eliminar el producto con el ID: " + idEliminar  ,"Advertencia!!!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (rpta == DialogResult.OK)
+                {
+                    if (ClaseProductos.Func_eliminaProducto(Convert.ToInt32(idEliminar)))
+                    {
+                        MessageBox.Show("Producto eliminado", "Felicitaciones!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: " + ClaseCategoria.excepcion, "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -191,7 +221,7 @@ namespace COMPLETE_FLAT_UI
             if (LblTitulo.Text == "Lista de Clientes")
             {
                 //Mostrar los usuarios en DGVDatos
-                this.DGVDatos.DataSource = ClaseUsuarios.Func_TraerClientes();
+                this.DGVDatos.DataSource = ClaseClientes.Func_TraerTodosClientes();
             }
             if (LblTitulo.Text == "Lista de Categorias")
             {

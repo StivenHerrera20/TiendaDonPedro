@@ -139,61 +139,23 @@ namespace COMPLETE_FLAT_UI
             }
 
         }
-
-        public static bool Func_InsertarCliente( string name, string dir, string email)
+        public static string Func_TraerPassAdmin()
         {
-            DataTable Tabla = new DataTable();
+            string pass = "";
             try
             {
                 SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "INSERT INTO TBL_CLIENTE VALUES ('" + name+ "','" + dir+ "','" + email + "');";
+                string consulta = "select PASSWORD_USUARIO from TBL_USUARIO where ROL_USUARIO = 'Administrador'";
                 SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
-                adap.Fill(Tabla);
-                return true;
+                DataTable tabla = new DataTable();
+                adap.Fill(tabla);
+                pass = tabla.Rows[0]["PASSWORD_USUARIO"].ToString();
+                return pass;
             }
             catch (Exception e)
             {
                 excepcion = e.Message;
-                return false;
-            }
-
-        }
-
-        public static bool Func_eliminaCliente(int id)
-        {
-            DataTable Tabla = new DataTable();
-            try
-            {
-                SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "DELETE FROM TBL_CLIENTE WHERE ID_CLIENTE=" + id + ";";
-                SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
-                adap.Fill(Tabla);
-                return true;
-            }
-            catch (Exception e)
-            {
-                excepcion = e.Message;
-                return false;
-            }
-
-        }
-
-
-        public static bool Func_EditarCliente(string name, string dir, string email, int id)
-        {
-            DataTable Tabla = new DataTable();
-            try
-            {
-                SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "UPDATE TBL_CLIENTE SET NOMBRE_CLIENTE='" + name + "', DIRECCION_CLIENTE='" + dir + "',EMAIL_CLIENTE='" + email + "' WHERE ID_CLIENTE=" + id;
-                SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
-                adap.Fill(Tabla);
-                return true;
-            }
-            catch (Exception e)
-            {
-                excepcion = e.Message;
-                return false;
+                return pass;
             }
 
         }

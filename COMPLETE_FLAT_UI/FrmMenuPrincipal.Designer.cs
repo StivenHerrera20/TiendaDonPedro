@@ -327,6 +327,7 @@
             this.BtnFacturas.Text = "Facturas";
             this.toolTip1.SetToolTip(this.BtnFacturas, "Facturas");
             this.BtnFacturas.UseVisualStyleBackColor = true;
+            this.BtnFacturas.Click += new System.EventHandler(this.BtnFacturas_Click);
             // 
             // pictureBox3
             // 
@@ -418,6 +419,7 @@
             this.PanelBarraTitulo.Name = "PanelBarraTitulo";
             this.PanelBarraTitulo.Size = new System.Drawing.Size(1100, 43);
             this.PanelBarraTitulo.TabIndex = 1;
+            this.PanelBarraTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelBarraTitulo_Paint);
             this.PanelBarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseDown);
             // 
             // pictureBox8

@@ -8,22 +8,24 @@ using System.Threading.Tasks;
 
 namespace COMPLETE_FLAT_UI
 {
-    public class ClaseProductos
+    public class ClaseFactDetcs
     {
+
         public static string cadena = "Server=(local)\\SQLEXPRESS;Database=BD_TiendaDonPedro;User Id=Adso2501875;Password=12345;";
         public static string excepcion = "";
-
+        //1. declaro un dt publico
+        public static DataTable DTDetalle = new DataTable();
 
         //Parametro: Ninguno
         //Retorno tabla
-        //Trae Toda la informacion de los productos
-        public static DataTable Func_TraerTodosProductos()
+        //Trae Toda la informacion de Un Cliente
+        public static DataTable Func_TraerUnProd(long id)
         {
             DataTable Tabla = new DataTable();
             try
             {
                 SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "select * from TBL_PRODUCTO";
+                string consulta = "select * from TBL_PRODUCTO Where ID_PRODUCTO=" + id;
                 SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
                 adap.Fill(Tabla);
                 return Tabla;
@@ -36,16 +38,16 @@ namespace COMPLETE_FLAT_UI
 
         }
 
-        //Parametro: Descripcion
+        //Parametro: nombre, direccion, email
         //Retorno Bool
-        //Inserta un producto en la tabla
-        public static bool Func_InsertarProductor(string name, int precio, int stock, double iva, int idcat)
+        //Inserta un cliente en la tabla
+        public static bool Func_InsertarProducto(string name, string dir, string email)
         {
             DataTable Tabla = new DataTable();
             try
             {
                 SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "INSERT INTO TBL_PRODUCTO VALUES ('" + name+ "',"+precio+","+stock+","+iva+ ","+idcat+");";
+                string consulta = "INSERT INTO TBL_CLIENTE VALUES ('" + name + "','" + dir + "','" + email + "');";
                 SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
                 adap.Fill(Tabla);
                 return true;
@@ -60,14 +62,14 @@ namespace COMPLETE_FLAT_UI
 
         //Parametro: id
         //Retorno Bool
-        //elimina un producto de la tabla
-        public static bool Func_eliminaProducto(int id)
+        //elimina un cliente en la tabla
+        public static bool Func_eliminaCliente(int id)
         {
             DataTable Tabla = new DataTable();
             try
             {
                 SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "DELETE FROM TBL_PRODUCTO WHERE ID_PRODUCTO=" + id + ";";
+                string consulta = "DELETE FROM TBL_CLIENTE WHERE ID_CLIENTE=" + id + ";";
                 SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
                 adap.Fill(Tabla);
                 return true;
@@ -83,14 +85,14 @@ namespace COMPLETE_FLAT_UI
 
         //Parametro: usuario, nombre, apellido, contraseña, rol, id
         //Retorno tabla
-        //edita la informacion del usuario
-        public static bool Func_EditarProducto(string name, int precio, int stock, double iva, int idcat, int idprod)
+        //edita la informacion del cliente
+        public static bool Func_EditarCliente(string name, string dir, string email, int id)
         {
             DataTable Tabla = new DataTable();
             try
             {
                 SqlConnection cnn = new SqlConnection(cadena);
-                string consulta = "UPDATE TBL_PRODUCTO SET NOMBRE_PRODUCTO='" + name+ "', PRECIO_PRODUCTO='" + precio.ToString()+ "', STOCK_PRODUCTO='" + stock.ToString()+ "', IVA_PRODUCTO='" + iva.ToString()+ "', ID_CATEGORIA='" + idcat.ToString()+ "' WHERE ID_PRODUCTO=" + idprod;
+                string consulta = "UPDATE TBL_CLIENTE SET NOMBRE_CLIENTE='" + name + "' , DIRECCION_CLIENTE='" + dir + "', EMAIL_CLIENTE='" + email + "' WHERE ID_CLIENTE=" + id;
                 SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
                 adap.Fill(Tabla);
                 return true;
@@ -102,5 +104,25 @@ namespace COMPLETE_FLAT_UI
             }
 
         }
+
+        public static DataTable Func_InsertarDetalle(long idfact, long idprod, long cant, long precio, long vlrIVA)
+        {
+            DataTable Tabla = new DataTable();
+            try
+            {
+                SqlConnection cnn = new SqlConnection(cadena);
+                string consulta = "INSERT INTO TBL_DETALLEFACTURA VALUES ("+idfact+","+idprod+","+cant+","+precio+","+vlrIVA+");";
+                SqlDataAdapter adap = new SqlDataAdapter(consulta, cnn);
+                adap.Fill(Tabla);
+                return Tabla;
+            }
+            catch (Exception e)
+            {
+                excepcion = e.Message;
+                return Tabla;
+            }
+
+        }
+
     }
 }
